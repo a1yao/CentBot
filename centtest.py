@@ -83,7 +83,20 @@ async def history (ctx):
     )
     await ctx.send(embed = histBed)
 
-
+@client.command()
+async def im (ctx, member: discord.Member):
+    for i in memList:
+        if i[1] >= 0:
+            temp2 = '${:,.2f}'.format(i[1])
+        if i[1] < 0:
+            temp2 = '-${:,.2f}'.format(i[1]*-1)
+        if i[0] == member.name:
+            imBed = discord.Embed(
+                title = i[0],
+                description = temp2
+            ) 
+    await ctx.send(embed = imBed)
+    
 
 client.run(token)
 
